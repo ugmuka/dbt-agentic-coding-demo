@@ -4,7 +4,7 @@ silent: true
 
 vars:
   YEARS: 6
-  DB: bigquery
+  DB: duckdb
 
 tasks:
   venv:
