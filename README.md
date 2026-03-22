@@ -106,4 +106,5 @@ Analyst（データ調査） → Architect（設計） → Analytics Engineer（
 ## 参考
 
 - [dbt-labs/jaffle-shop](https://github.com/dbt-labs/jaffle-shop) — ベースプロジェクト
+- https://github.com/gotalab/cc-sdd — cc-sdd（Claude Code Spec-Driven Development）の参照元
 - https://www.youtube.com/watch?v=NolqjHDl9UM — エージェントアーキテクチャの参照元
