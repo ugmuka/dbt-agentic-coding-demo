@@ -38,42 +38,18 @@
             "Bash(uniq *)",
             "Bash(diff *)",
             "Bash(tee /tmp/*)",
-            "Bash(ruby --version)",
-            "Bash(node --version)",
-            "Bash(npx --version)",
             "Bash(python3 --version)",
             "Bash(git --version)",
-            "Bash(bundle *)",
-            "Bash(rubocop *)",
-            "Bash(rspec *)",
-            "Bash(rails *)",
             "Bash(dbt *)",
+            "Bash(duckdb *)",
             "Bash(uv sync)",
-            "Bash(uv run ruff *)",
-            "Bash(uv run pytest *)",
-            "Bash(uv tool run ast-grep *)",
-            "Bash(ruff *)",
-            "Bash(terraform init *)",
-            "Bash(terraform plan *)",
-            "Bash(terraform validate *)",
-            "Bash(terraform fmt *)",
-            "Bash(terraform show *)",
-            "Bash(terraform output *)",
-            "Bash(terragrunt init *)",
-            "Bash(terragrunt plan *)",
-            "Bash(terragrunt validate *)",
-            "Bash(terragrunt run-all plan *)",
-            "Bash(terragrunt run-all validate *)",
-            "Bash(terragrunt output *)",
-            "Bash(docker compose up *)",
-            "Bash(docker compose down *)",
-            "Bash(docker compose restart *)",
-            "Bash(docker compose config *)",
-            "Bash(docker compose ps *)",
-            "Bash(docker compose logs *)",
             "Write(/tmp/**)"
         ],
         "deny": [
+            "Bash(duckdb * DELETE *)",
+            "Bash(duckdb * DROP *)",
+            "Bash(duckdb * delete *)",
+            "Bash(duckdb * drop *)",
             "Bash(rm *)",
             "Bash(rmdir *)",
             "Bash(unlink *)",
@@ -104,15 +80,6 @@
             "Bash(gh api --method PUT *)",
             "Bash(gh api --method PATCH *)",
             "Bash(gh api --method DELETE *)",
-            "Bash(rails generate *)",
-            "Bash(rails g *)",
-            "Bash(terraform init -upgrade *)",
-            "Bash(terragrunt init -upgrade *)",
-            "Bash(terraform destroy *)",
-            "Bash(terragrunt destroy *)",
-            "Bash(terragrunt run-all destroy *)",
-            "Bash(docker compose run *)",
-            "Bash(docker compose exec *)",
             "Bash(* .env*)",
             "Read(./.env)",
             "Edit(./.env)",
@@ -132,9 +99,6 @@
             "Read(~/.dbt/**)",
             "Edit(~/.dbt/**)",
             "Write(~/.dbt/**)",
-            "Read(./infra/terraform/live/dev/snowflake/keys/**)",
-            "Edit(./infra/terraform/live/dev/snowflake/keys/**)",
-            "Write(./infra/terraform/live/dev/snowflake/keys/**)",
             "Read(./**/*.p8)",
             "Read(./**/*.pem)",
             "Read(./**/*.key)",
@@ -142,47 +106,6 @@
             "Write(~/.zshrc)",
             "Edit(~/.bashrc)",
             "Write(~/.bashrc)"
-        ]
-    },
-    "hooks": {
-        "PostToolUse": [
-            {
-                "matcher": "Bash",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "bash .claude/hooks/capture_signal.sh"
-                    }
-                ]
-            },
-            {
-                "matcher": "AskUserQuestion",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "bash .claude/hooks/capture_signal.sh"
-                    }
-                ]
-            },
-            {
-                "matcher": "Edit|Write",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "bash .claude/hooks/exec_rubocop.sh"
-                    }
-                ]
-            }
-        ],
-        "Stop": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "bash .claude/hooks/check_threshold.sh"
-                    }
-                ]
-            }
         ]
     },
     "language": "ja",
@@ -194,24 +117,12 @@
                 "pypi.org",
                 "files.pythonhosted.org",
                 "docs.python.org",
-                "rubygems.org",
-                "api.rubygems.org",
-                "bundler.io",
-                "guides.rubyonrails.org",
-                "api.rubyonrails.org",
                 "docs.getdbt.com",
                 "hub.getdbt.com",
                 "registry.getdbt.com",
-                "registry.terraform.io",
-                "developer.hashicorp.com",
-                "releases.hashicorp.com",
-                "checkpoint-api.hashicorp.com",
                 "github.com",
                 "api.github.com",
-                "raw.githubusercontent.com",
-                "registry-1.docker.io",
-                "auth.docker.io",
-                "index.docker.io"
+                "raw.githubusercontent.com"
             ]
         }
     }
