@@ -1,0 +1,56 @@
+models:
+  - name: orders
+    description: >
+      Order-level mart model that aggregates order items per order, computes supply costs,
+      derives food/drink item counts and boolean flags, and assigns a sequential order number
+      per customer based on order date.
+    columns:
+      - name: order_id
+        description: The unique key for each order.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: location_id
+        description: The ID of the store location where the order was placed.
+
+      - name: customer_id
+        description: The ID of the customer who placed the order.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('customers')
+              field: customer_id
+
+      - name: order_total
+        description: The total amount of the order including tax, in dollars.
+
+      - name: tax_paid
+        description: The tax amount paid for the order, in dollars.
+
+      - name: subtotal
+        description: The subtotal of the order before tax, in dollars.
+
+      - name: ordered_at
+        description: The date when the order was placed.
+
+      - name: count_order_items
+        description: The number of items in the order.
+
+      - name: supply_cost
+        description: The total supply cost for all items in the order, in dollars.
+
+      - name: count_food_items
+        description: The number of food items in the order.
+
+      - name: count_drink_items
+        description: The number of drink items in the order.
+
+      - name: is_food_order
+        description: Boolean flag indicating whether the order contains at least one food item.
+
+      - name: is_drink_order
+        description: Boolean flag indicating whether the order contains at least one drink item.
+
+      - name: customer_order_number
+        description: The sequential order number for the customer, starting at 1 for their first order.

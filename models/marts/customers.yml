@@ -1,0 +1,33 @@
+models:
+  - name: customers
+    description: Customer data with order history aggregated to one row per customer.
+    columns:
+      - name: customer_id
+        description: The unique key for each customer.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_name
+        description: The full name of the customer.
+
+      - name: count_orders
+        description: The total number of orders placed by the customer. Zero if the customer has never ordered.
+
+      - name: first_ordered_at
+        description: The date of the customer's first order.
+
+      - name: last_ordered_at
+        description: The date of the customer's most recent order.
+
+      - name: lifetime_spend_pretax
+        description: The total amount spent by the customer before tax, in dollars.
+
+      - name: lifetime_spend
+        description: The total amount spent by the customer including tax, in dollars.
+
+      - name: customer_type
+        description: Indicates whether the customer is 'returning' (two or more orders) or 'new' (fewer than two orders).
+        data_tests:
+          - accepted_values:
+              values: ['returning', 'new']
