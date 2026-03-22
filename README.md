@@ -67,9 +67,24 @@ cc-sdd（Claude Code Spec-Driven Development）は、Kiro-style Spec Driven Deve
 /kiro:spec-impl new-mart-model
 ```
 
+## dbt 開発コマンドの使い分け
+
+dbt モデルの開発には 2 つのアプローチがある。
+
+| アプローチ | コマンド | 用途 |
+|-----------|---------|------|
+| Spec-Driven | `/kiro:spec-impl` | 仕様に基づく計画的な実装。requirements → design → tasks のフローを経て実装する |
+| Ad-hoc | `/dbt-dev` | spec 不要の単発タスク。カラム追加、テスト修正など小さな作業向け |
+
+`/kiro:spec-impl` で dbt モデルの実装タスクを実行する際は、内部的に `/dbt-dev` と同じマルチエージェントチーム（dbt-developer）に委譲される（`.claude/rules/dbt-impl.md` で定義）。
+
+**選び方**:
+- 新しい mart モデルの追加など、設計判断を伴う開発 → cc-sdd フロー（`/kiro:spec-impl`）
+- 既存モデルの修正や小さな変更 → `/dbt-dev`
+
 ## マルチエージェントアーキテクチャ
 
-`/dbt-dev` コマンドで、4 つの専門エージェントによるマルチエージェント開発を実行できる。エージェント定義は `.claude/agents/` に格納されている。
+`/dbt-dev` コマンドおよび `/kiro:spec-impl`（dbt タスク時）で、4 つの専門エージェントによるマルチエージェント開発を実行できる。エージェント定義は `.claude/agents/` に格納されている。
 
 | エージェント | 役割 | 権限 |
 |-------------|------|------|

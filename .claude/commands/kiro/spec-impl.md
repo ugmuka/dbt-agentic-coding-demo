@@ -1,6 +1,6 @@
 ---
 description: Execute spec tasks using TDD methodology
-allowed-tools: Bash, Read, Write, Edit, MultiEdit, Grep, Glob, LS, WebFetch, WebSearch
+allowed-tools: Agent, Bash, Read, Write, Edit, MultiEdit, Grep, Glob, LS, WebFetch, WebSearch
 argument-hint: <feature-name> [task-numbers]
 ---
 
