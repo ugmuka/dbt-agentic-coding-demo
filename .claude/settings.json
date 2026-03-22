@@ -108,6 +108,9 @@
             "Write(~/.bashrc)"
         ]
     },
+    "enabledPlugins": {
+        "claude-md-management@claude-plugins-official": true
+    },
     "language": "ja",
     "sandbox": {
         "enabled": true,
